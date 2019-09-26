@@ -208,6 +208,7 @@ open class SwipeCollectionViewCell: UICollectionViewCell {
 }
 
 extension SwipeCollectionViewCell: SwipeControllerDelegate {
+
     func swipeController(_ controller: SwipeController, canBeginEditingSwipeableFor orientation: SwipeActionsOrientation) -> Bool {
         return true
     }
@@ -252,5 +253,10 @@ extension SwipeCollectionViewCell: SwipeControllerDelegate {
     func swipeController(_ controller: SwipeController, didDeleteSwipeableAt indexPath: IndexPath) {
         collectionView?.deleteItems(at: [indexPath])
     }
+
+    func swipeCellShouldAllowOtherGestureRecoginzerToWorkSimultaneously(_ otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return delegate?.swipeCellShouldAllowOtherGestureRecoginzerToWorkSimultaneously(otherGestureRecognizer) ?? false
+    }
+
 }
 
