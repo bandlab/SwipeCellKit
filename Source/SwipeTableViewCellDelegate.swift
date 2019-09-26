@@ -72,6 +72,11 @@ public protocol SwipeTableViewCellDelegate: class {
      - note: The returned rectange should be in the table view's own coordinate system. Returning `nil` will result in no vertical offset to be be calculated.
      */
     func visibleRect(for tableView: UITableView) -> CGRect?
+
+    /**
+    We need this to make scrolling of a scrollView that contains the table view, possible
+     */
+    func shouldRecognizeOtherGestureRecoginzerSimultaneously(_ otherGestureRecognizer: UIGestureRecognizer) -> Bool
 }
 
 /**

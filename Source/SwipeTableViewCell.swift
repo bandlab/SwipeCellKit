@@ -224,4 +224,8 @@ extension SwipeTableViewCell: SwipeControllerDelegate {
     func swipeController(_ controller: SwipeController, didDeleteSwipeableAt indexPath: IndexPath) {
         tableView?.deleteRows(at: [indexPath], with: .none)
     }
+
+    func swipeCellShouldAllowOtherGestureRecoginzerToWorkSimultaneously(_ otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return delegate?.shouldRecognizeOtherGestureRecoginzerSimultaneously(otherGestureRecognizer) ?? false
+    }
 }

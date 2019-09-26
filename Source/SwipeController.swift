@@ -23,6 +23,8 @@ protocol SwipeControllerDelegate: class {
     func swipeController(_ controller: SwipeController, didDeleteSwipeableAt indexPath: IndexPath)
     
     func swipeController(_ controller: SwipeController, visibleRectFor scrollView: UIScrollView) -> CGRect?
+
+    func swipeCellShouldAllowOtherGestureRecoginzerToWorkSimultaneously(_ otherGestureRecognizer: UIGestureRecognizer) -> Bool
     
 }
 
@@ -366,6 +368,10 @@ extension SwipeController: UIGestureRecognizerDelegate {
         }
         
         return true
+    }
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return delegate?.swipeCellShouldAllowOtherGestureRecoginzerToWorkSimultaneously(otherGestureRecognizer) ?? false
     }
 }
 
